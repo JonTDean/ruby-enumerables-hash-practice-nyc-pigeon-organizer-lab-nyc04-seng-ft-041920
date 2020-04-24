@@ -1,3 +1,4 @@
+
 # Main Function
 def nyc_pigeon_organizer(data)
   names = findNames(data)
@@ -11,35 +12,15 @@ def toHash(array)
   properties = []
 
   array.each do |organize| #REF1
-
     # Create Top Level Hash
     if !bird_list.include?(organize[0])
       bird_list[organize[0]] = {}
-      
-      if !bird_list[organize[1]]
-        bird_list[organize[0]][organize[1]] = {}# REF2:
-      end
-
-      if !bird_list[organize[2]]
-        bird_list[organize[0]][organize[1]] = []
-      end
-
-      bird_list[organize[0]][organize[1]] << organize[2].to_s
     end
-    
-    bird_list.each do |birdsProperty, birdsValue|
-      # p birdsProperty
-      # p organize[0]
-      # p birdsProperty
-      if birdsProperty == organize[0]
-        birdsValue.each do |propertyKey, propertyArray|
-          # p propertyKey
-          if propertyKey == organize[1]
-            propertyArray << organize[2]
-          end
-        end
-      end
-      # p bird_list[organize[0]][organize[1]] << organize[2].to_s
+    if !bird_list[organize[0]].include?(organize[1])
+      bird_list[organize[0]][organize[1]] = []
+    end
+    if !bird_list[organize[0]][organize[1]].include?(organize[2])
+      bird_list[organize[0]][organize[1]] << organize[2].to_s
     end
   end
 
